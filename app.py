@@ -71,8 +71,5 @@ def homepage():
 
 
 
-app.run(port=8090)
-
-
 
 
