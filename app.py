@@ -59,6 +59,7 @@ def predict(x,y):
     
     single_x = scale.transform(single_x)
     
+    model =  SoftmaxRegressionModel()
     model = joblib.load('model.pkl')
     
     data_input = torch.FloatTensor(single_x)
