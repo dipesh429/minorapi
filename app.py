@@ -38,9 +38,10 @@ def predict(x,y):
     
     single_x = scale.transform(single_x)
     
-    
-    model = joblib.load('model.pkl')
-    
+    model = SoftmaxRegressionModel()
+#    model = joblib.load('model.pkl')
+    model.load_state_dict(torch.load('modell.pkl'))
+#
     data_input = torch.FloatTensor(single_x)
     
     outputs = model(data_input)
@@ -67,9 +68,9 @@ def get_parameters():
 def homepage():
     
 
-    return "Welcome to our prediction"
+    return "Welcome to our prediction. It workeddddddddd"
 
 
 
 
-
+#app.run(port=8090)
