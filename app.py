@@ -87,7 +87,7 @@ def homepage():
     return "Welcome to our prediction"
 
 
-app.run(port=8090)
+
 
 
 
