@@ -2,33 +2,16 @@ from flask import Flask,request,jsonify
 from flask_cors import CORS
 import pandas as pd
 import numpy as np
-import torch.nn as nn
 import torch
+import torch.nn as nn
 
+from softmax import SoftmaxRegressionModel 
 
 from sklearn.externals import joblib
 
 app = Flask(__name__)
 
 cors = CORS(app) 
-
-class SoftmaxRegressionModel(nn.Module):
-    
-    def __init__(self):
-        super().__init__()
-
-        
-        self.fc1 = nn.Linear(52,13)
-        self.sigmoid = nn.Sigmoid()
-        self.fc2 = nn.Linear(13,3)
-
-    def forward(self,x):
-
-        out = self.fc1(x)
-        out = self.sigmoid(out)
-        out = self.fc2(out)
-        return out
-
 
 
 def predict(x,y):
@@ -88,7 +71,7 @@ def homepage():
 
 
 
-
+app.run(port=8090)
 
 
 
