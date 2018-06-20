@@ -8,13 +8,9 @@ import torch
 
 from sklearn.externals import joblib
 
-
-
 app = Flask(__name__)
 
-#cors = CORS(app, resources={r"/api/*": {"origins": "http://localhost:8080"}})
 cors = CORS(app) 
-
 
 class SoftmaxRegressionModel(nn.Module):
     
@@ -91,7 +87,7 @@ def homepage():
     return "Welcome to our prediction"
 
 
-#hello("hello")
+app.run(port=8090)
 
 
 
