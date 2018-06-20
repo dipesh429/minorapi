@@ -93,7 +93,7 @@ def homepage():
 #hello("hello")
 
        
-app.run(port=8050,debug=True)
+app.run(port=8050)
 
 
 
