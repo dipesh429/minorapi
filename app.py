@@ -14,8 +14,9 @@ app = Flask(__name__)
 cors = CORS(app) 
 
 
-def predict(x,y):
+def predict(x,y,v,w):
     
+   
     single_x = np.array([x,y])
     
     labelencoder_team = joblib.load('label.pkl')
@@ -25,12 +26,12 @@ def predict(x,y):
     onehotencoder = joblib.load('onehot.pkl')
     single_x = onehotencoder.transform(single_x.reshape(1,-1)).toarray()
     
-    single_x =pd.DataFrame(single_x )
+    single_x =pd.DataFrame(single_x)
     
     single_x.drop([0,51],axis=1,inplace= True)
     
-    single_x[51]=0.8
-    single_x[52]=0.4
+    single_x[51]=v
+    single_x[52]=w
     
     single_x=single_x.values
     
@@ -59,7 +60,7 @@ def predict(x,y):
 def get_parameters():
     
     usr_data=request.get_json()
-    result=predict(usr_data['home'],usr_data['away'])
+    result=predict(usr_data['home'],usr_data['away'],usr_data['count1'],usr_data['count2'])
 
     return jsonify(result)
 
